@@ -33,17 +33,16 @@ namespace Application.RabbitMQ
             _channel = _connection.CreateModel();
         }
 
-        public delegate void ReceivedMessageEventHandler(MessageSenderRequest messageSenderRequest);
         public event ReceivedMessageEventHandler? OnReceived;
+
         public void Listen()
         {
-   
             _channel.ExchangeDeclare(
-            exchange: _exchangeName,
-            type: _type,
-            durable: true,
-            autoDelete: false,
-            arguments: null
+                exchange: _exchangeName,
+                type: _type,
+                durable: true,
+                autoDelete: false,
+                arguments: null
             );
 
             _channel.QueueDeclare(
@@ -67,15 +66,26 @@ namespace Application.RabbitMQ
                     OnReceived?.Invoke(new MessageSenderRequest(int.Parse(data)));
 
                     _channel.BasicAck(eventArgs.DeliveryTag, false);
-                } catch
+                }
+                catch
                 {
                     _channel.BasicNack(eventArgs.DeliveryTag, false, true);
                 }
             };
+
+            _channel.BasicConsume(
+                queue: _queueName,
+                autoAck: false,
+                exclusive: false,
+                arguments: null,
+                consumer: consumer
+            );
         }
 
         public void Dispose()
         {
+            _connection.Dispose();
+            _channel.Dispose();
         }
     }
 }
