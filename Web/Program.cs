@@ -37,6 +37,7 @@ var messageConsumerService = serviceScope.ServiceProvider.GetRequiredService<IRa
 messageConsumerService.OnReceived += data =>
 {
     Console.WriteLine($"Foi solicitado um relatório das últimas {data.QtdLinhas} linhas");
+    Thread.Sleep(1_000);
 };
 
 messageConsumerService.Listen();
