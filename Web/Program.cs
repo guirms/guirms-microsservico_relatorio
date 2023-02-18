@@ -1,3 +1,6 @@
+using Application.Interfaces;
+using CrossCuting.Native_Injector;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,7 +10,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var app =  builder.Build();
+builder.Services.AddServices();
+
+// Dependency Injector
+NativeInjector.AddServices(builder.Services);
+
+var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -16,10 +24,22 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapControllers();
+
+var serviceScope = app.Services.CreateScope();
+var messageConsumerService = serviceScope.ServiceProvider.GetRequiredService<IRabbitMqConfig>();
+
+messageConsumerService.OnReceived += data =>
+{
+    Console.WriteLine($"Foi solicitado um relatório das últimas {data.QtdLinhas} linhas");
+    Thread.Sleep(1_000);
+};
+
+messageConsumerService.Listen();
 
 app.Run();
