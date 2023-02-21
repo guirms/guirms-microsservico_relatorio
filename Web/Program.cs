@@ -10,10 +10,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddServices();
-
 // Dependency Injector
-NativeInjector.AddServices(builder.Services);
+NativeInjector.RegisterServices(builder.Services);
 
 var app = builder.Build();
 
@@ -24,7 +22,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
@@ -32,14 +29,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 var serviceScope = app.Services.CreateScope();
-var messageConsumerService = serviceScope.ServiceProvider.GetRequiredService<IRabbitMqConfig>();
-
-messageConsumerService.OnReceived += data =>
-{
-    Console.WriteLine($"Foi solicitado um relatório das últimas {data.QtdLinhas} linhas");
-    Thread.Sleep(1_000);
-};
-
-messageConsumerService.Listen();
+serviceScope.ServiceProvider.GetRequiredService<IRelatorioService>();
 
 app.Run();
