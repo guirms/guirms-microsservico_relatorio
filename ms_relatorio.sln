@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra.CrossCuting", "Infra.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.2 - MessageConsumer", "3.2 - MessageConsumer", "{7F06F2F9-4FCA-4DD3-A16A-8017F8A4862F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infra.MessageConsumer", "Infra.MessageConsumer\Infra.MessageConsumer.csproj", "{3D3E3447-2C1E-447A-A239-1DA93486774B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra.MessageConsumer", "Infra.MessageConsumer\Infra.MessageConsumer.csproj", "{3D3E3447-2C1E-447A-A239-1DA93486774B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
