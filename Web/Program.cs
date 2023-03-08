@@ -29,6 +29,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 var serviceScope = app.Services.CreateScope();
-serviceScope.ServiceProvider.GetRequiredService<IRelatorioService>();
+//serviceScope.ServiceProvider.GetRequiredService<IRelatorioService>();
 
 app.Run();

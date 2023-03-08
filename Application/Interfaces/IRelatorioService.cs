@@ -2,6 +2,6 @@
 {
     public interface IRelatorioService
     {
-        public void Teste();
+        public void GerarRelatorioPDF();
     }
 }
