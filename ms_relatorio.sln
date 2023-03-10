@@ -21,6 +21,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.2 - MessageConsumer", "3.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra.MessageConsumer", "Infra.MessageConsumer\Infra.MessageConsumer.csproj", "{3D3E3447-2C1E-447A-A239-1DA93486774B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.3 - External", "3.3 - External", "{ABCAA99F-A6B1-46F1-A569-0E6580731EA8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infra.External", "Infra.External\Infra.External.csproj", "{96DABE99-F0D8-43FE-AE1C-E7D42B13D9C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +47,10 @@ Global
 		{3D3E3447-2C1E-447A-A239-1DA93486774B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D3E3447-2C1E-447A-A239-1DA93486774B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D3E3447-2C1E-447A-A239-1DA93486774B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96DABE99-F0D8-43FE-AE1C-E7D42B13D9C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96DABE99-F0D8-43FE-AE1C-E7D42B13D9C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96DABE99-F0D8-43FE-AE1C-E7D42B13D9C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96DABE99-F0D8-43FE-AE1C-E7D42B13D9C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,6 +62,8 @@ Global
 		{F41193FB-D191-485A-9849-5FF99F512E32} = {F57BC6D8-8A65-411B-B6F1-03906F4C0492}
 		{7F06F2F9-4FCA-4DD3-A16A-8017F8A4862F} = {F86DDDE9-63CE-41F6-8EFA-0128C90B3174}
 		{3D3E3447-2C1E-447A-A239-1DA93486774B} = {7F06F2F9-4FCA-4DD3-A16A-8017F8A4862F}
+		{ABCAA99F-A6B1-46F1-A569-0E6580731EA8} = {F86DDDE9-63CE-41F6-8EFA-0128C90B3174}
+		{96DABE99-F0D8-43FE-AE1C-E7D42B13D9C4} = {ABCAA99F-A6B1-46F1-A569-0E6580731EA8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4C18521E-909B-47CA-80B8-6C6E95824424}

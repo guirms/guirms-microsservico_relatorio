@@ -11,9 +11,4 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Infra.External\Infra.External.csproj" />
-    <ProjectReference Include="..\Infra.MessageConsumer\Infra.MessageConsumer.csproj" />
-  </ItemGroup>
-
 </Project>

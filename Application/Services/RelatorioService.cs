@@ -3,11 +3,15 @@ using iText.Kernel.Pdf;
 using iText.Layout;
 using iText.Layout.Element;
 using iText.Layout.Properties;
+using System.IO;
+using System.Net.Http;
+using System.Net.Http.Headers;
 
 namespace Application.Services
 {
     public class RelatorioService : IRelatorioService
     {
+        //private readonly IEstacionaFacilRepository _estacionaFacilRepository;
         //public RelatorioService(IRabbitMqConfig messageConsumerService)
         //{
         //    messageConsumerService.OnReceived += data =>
@@ -21,34 +25,80 @@ namespace Application.Services
 
         public RelatorioService()
         {
-            
+            //_estacionaFacilRepository = estacionaFacilRepository;
         }
 
-        public void GerarRelatorioPDF()
+        public async void GerarRelatorioPDF()
         {
-            #region CriandoListaFake
+            var url = @"https://localhost:7253/Usuario/Teste";
 
-            var pessoa1 = new Pessoa(1, "João", "Do Caminhão", 2500, new Profissao(1, "Caminhoneiro"), true);
-            var pessoa2 = new Pessoa(2, "Amilton", "Chinelo", 0, new Profissao(2, "Vadio"), false);
+            //// cria um novo documento PDF
+            //PdfDocument pdf = new PdfDocument(new PdfWriter("meuDocumento.pdf"));
+            //Document documento = new Document(pdf);
 
-            var pessoas = new List<Pessoa>
+            //// adiciona conteúdo ao documento
+            //documento.Add(new Paragraph("Este é um documento PDF gerado com iText7."));
+
+            //// fecha o documento
+            //documento.Close();
+
+            HttpClient httpClient = new HttpClient();
+
+            //// lê o conteúdo do arquivo PDF
+            //byte[] conteudoPdf = File.ReadAllBytes("meuDocumento.pdf");
+
+            //// cria um objeto HttpContent com o conteúdo do arquivo PDF
+            //HttpContent content = new ByteArrayContent(conteudoPdf);
+
+            //// envia o POST com o arquivo PDF
+            //HttpResponseMessage response = await httpClient.PostAsync(url, content);
+
+            //// verifica se a requisição foi bem sucedida
+            //if (response.IsSuccessStatusCode)
+            //{
+            //    Console.WriteLine("Documento PDF enviado com sucesso.");
+            //}
+
+            // NOVO
+
+            // Cria um novo documento PDF
+            MemoryStream memoryStream = new MemoryStream();
+            PdfDocument pdf = new PdfDocument(new PdfWriter(memoryStream));
+            Document documento = new Document(pdf);
+
+            // Adiciona conteúdo ao documento
+            documento.Add(new Paragraph("Este é um documento PDF gerado com iText7."));
+
+            // Fecha o documento
+            documento.Close();
+
+            // Cria um objeto HttpContent com o conteúdo do arquivo PDF
+            byte[] conteudoPdf = memoryStream.ToArray();
+            HttpContent content = new ByteArrayContent(conteudoPdf);
+
+            // Envia o POST com o arquivo PDF
+            HttpResponseMessage response = await httpClient.PostAsync(url, content);
+
+            // Verifica se a requisição foi bem sucedida
+            if (response.IsSuccessStatusCode)
             {
-                pessoa1,
-                pessoa2
-            };
+                Console.WriteLine("Documento PDF enviado com sucesso.");
+            }
 
-            #endregion
+            // DPS DE PRONTO
 
-            PdfWriter writer = new PdfWriter(@"C:\Users\user\Desktop\arquivo.pdf");
-            PdfDocument pdf = new PdfDocument(writer);
-            Document document = new Document(pdf);
+            //using (var memoryStream = new MemoryStream())
+            //{
+            //    var writer = new PdfWriter(memoryStream);
+            //    var pdfDocument = new PdfDocument(writer);
 
-            Paragraph p = new Paragraph("poggers")
-                .SetTextAlignment(TextAlignment.CENTER)
-                .SetFontSize(24);
-            document.Add(p);
+            //    Paragraph p = new Paragraph("poggers")
+            //        .SetTextAlignment(TextAlignment.CENTER)
+            //        .SetFontSize(24);
 
-            document.Close();
+
+            //    _estacionaFacilRepository.EnviarRelatorio(pdfDocument);
+            //}
         }
 
         [Serializable]
