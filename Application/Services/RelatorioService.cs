@@ -7,8 +7,7 @@ namespace Application.Services
     public class RelatorioService : IRelatorioService
     {
         private readonly IEstacionaFacilRepository _estacionaFacilRepository;
-        private readonly IRelatorioGeral _relatorioGeral;
-        //public RelatorioService(IRabbitMqConfig messageConsumerService, IEstacionaFacilRepository estacionaFacilRepository, IRelatorioGeral relatorioGeral)
+        //public RelatorioService(IRabbitMqConfig messageConsumerService, IEstacionaFacilRepository estacionaFacilRepository)
         //{
         //    messageConsumerService.OnReceived += data =>
         //    {
@@ -19,13 +18,11 @@ namespace Application.Services
         //    messageConsumerService.Listen();
 
         //    _estacionaFacilRepository = estacionaFacilRepository;
-        //    _relatorioGeral = relatorioGeral;
         //}
 
         public RelatorioService()
         {
             //_estacionaFacilRepository = estacionaFacilRepository;
-            //_relatorioGeral = relatorioGeral;
         }
 
         public async Task<bool> GerarRelatorioPDF()
@@ -56,7 +53,7 @@ namespace Application.Services
 
             using (var memory = new MemoryStream())
             {
-                var documento = _relatorioGeral.GerarRelatorioGeral(memory);
+                var documento = RelatorioGeral.GerarRelatorioGeral(memory);
 
                 if (documento != null)
                 {

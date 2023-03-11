@@ -13,7 +13,6 @@ namespace CrossCuting.Native_Injector
             services.AddSingleton<IRabbitMqConfig, RabbitMqConfig>();
             services.AddScoped<IRelatorioService, RelatorioService>();
      //       services.AddScoped<IEstacionaFacilRepository, EstacionaFacilRepository>();
-            services.AddScoped<IRelatorioGeral, RelatorioGeral>();
         }
     }
 }

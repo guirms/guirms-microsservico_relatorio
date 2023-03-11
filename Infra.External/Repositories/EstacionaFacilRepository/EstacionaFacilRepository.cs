@@ -1,4 +1,5 @@
-﻿using Infra.External.HttpRepositoryBase;
+﻿using Domain.Helper;
+using Infra.External.HttpRepositoryBase;
 using iText.Layout;
 using Microsoft.Extensions.Configuration;
 
@@ -8,7 +9,7 @@ namespace Infra.External.Repositories.EstacionaFacilRepository
     {
         private readonly string urlApi;
 
-        public EstacionaFacilRepository(HttpClient httpClient, IConfiguration configuration) : base(httpClient) => urlApi = configuration["External:EstacionaFacilUrl"];
+        public EstacionaFacilRepository(HttpClient httpClient, IConfiguration configuration) : base(httpClient) => urlApi = configuration["External:EstacionaFacilUrl"].GetSafeValue();
 
         public async Task<HttpResponseMessage> EnviarRelatorio(Document documento, MemoryStream memory)
         {

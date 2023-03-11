@@ -3,9 +3,9 @@ using iText.Layout;
 using iText.Layout.Element;
 namespace Application.Reports.RelatorioGeral
 {
-    public class RelatorioGeral: IRelatorioGeral
+    public static class RelatorioGeral
     {
-        public Document GerarRelatorioGeral(MemoryStream memory)
+        public static Document GerarRelatorioGeral(MemoryStream memory)
         {
             var pdf = new PdfDocument(new PdfWriter(memory));
             var documento = new Document(pdf);
