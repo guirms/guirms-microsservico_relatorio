@@ -12,7 +12,7 @@ namespace Infra.External.Repositories.EstacionaFacilRepository
     {
         private readonly string urlApi;
 
-        public EstacionaFacilRepository(HttpClient httpClient, IConfiguration configuration) : base(httpClient) => urlApi = configuration["External:EstacionaFacilUrl"].GetSafeValue();
+        public EstacionaFacilRepository(HttpClient httpClient, IConfiguration configuration) : base(httpClient) => urlApi = configuration["External:EstacionaFacilUrl"];
 
         public async Task<HttpResponseMessage> EnviarRelatorio(Document documento, MemoryStream memory)
         {
