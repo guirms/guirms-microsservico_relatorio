@@ -1,7 +1,7 @@
 ﻿using Application.Interfaces;
 using Application.RabbitMQ;
+using Application.Reports.RelatorioGeral;
 using Application.Services;
-using Infra.External.Repositories.EstacionaFacilRepository;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CrossCuting.Native_Injector
@@ -13,6 +13,7 @@ namespace CrossCuting.Native_Injector
             services.AddSingleton<IRabbitMqConfig, RabbitMqConfig>();
             services.AddScoped<IRelatorioService, RelatorioService>();
      //       services.AddScoped<IEstacionaFacilRepository, EstacionaFacilRepository>();
+            services.AddScoped<IRelatorioGeral, RelatorioGeral>();
         }
     }
 }

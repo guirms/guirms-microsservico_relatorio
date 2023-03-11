@@ -1,10 +1,6 @@
 ﻿using Infra.External.HttpRepositoryBase;
-using iText.Kernel.Pdf;
 using iText.Layout;
 using Microsoft.Extensions.Configuration;
-using System.IO;
-using System.Text;
-using System.Text.Json;
 
 namespace Infra.External.Repositories.EstacionaFacilRepository
 {
