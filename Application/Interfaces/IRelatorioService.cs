@@ -2,6 +2,6 @@
 {
     public interface IRelatorioService
     {
-        public void GerarRelatorioPDF();
+        public Task<bool> GerarRelatorioPDF();
     }
 }

@@ -1,9 +1,9 @@
-﻿using iText.Kernel.Pdf;
+﻿using iText.Layout;
 
 namespace Infra.External.Repositories.EstacionaFacilRepository
 {
     public interface IEstacionaFacilRepository
     {
-        Task EnviarRelatorio(PdfDocument? pdfDocument);
+        Task<HttpResponseMessage> EnviarRelatorio(Document documento, MemoryStream memory);
     }
 }

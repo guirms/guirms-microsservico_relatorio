@@ -1,5 +1,5 @@
 ﻿using Application.Interfaces;
-using Application.Services;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Web.Controllers
@@ -21,9 +21,9 @@ namespace Web.Controllers
         }
 
         [HttpGet("Gerar PDF")]
-        public void GerarPDF()
+        public Task<bool> GerarPDF()
         {
-            _relatorioService.GerarRelatorioPDF();
+            return _relatorioService.GerarRelatorioPDF();
         }
     }
 }

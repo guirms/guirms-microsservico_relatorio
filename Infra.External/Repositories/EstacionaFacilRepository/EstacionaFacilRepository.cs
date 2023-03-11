@@ -1,6 +1,8 @@
 ﻿using Infra.External.HttpRepositoryBase;
 using iText.Kernel.Pdf;
+using iText.Layout;
 using Microsoft.Extensions.Configuration;
+using System.IO;
 using System.Text;
 using System.Text.Json;
 
@@ -8,29 +10,18 @@ namespace Infra.External.Repositories.EstacionaFacilRepository
 {
     public class EstacionaFacilRepository : BaseHttpClient, IEstacionaFacilRepository
     {
-        private readonly IConfiguration _configuration;
+        private readonly string urlApi;
 
-        public EstacionaFacilRepository(HttpClient httpClient, IConfiguration configuration) : base(httpClient)
+        public EstacionaFacilRepository(HttpClient httpClient, IConfiguration configuration) : base(httpClient) => urlApi = configuration["External:EstacionaFacilUrl"].GetSafeValue();
+
+        public async Task<HttpResponseMessage> EnviarRelatorio(Document documento, MemoryStream memory)
         {
-            _configuration = configuration;
-        }
+            var byteDocumento = new ByteArrayContent(memory.ToArray());
 
-        public async Task EnviarRelatorio(PdfDocument? pdfDocument)
-        {
-            var model = new PdfModel
-            {
-                Content = pdfDocument.GetPage(1).GetContentBytes()
-            };
-
-            var jsonContent = JsonSerializer.Serialize(model);
-            var httpContent = new StringContent(jsonContent, Encoding.UTF8, "application/json");
-
-            await PostAsync(_configuration["External:EstacionaFacilUrl"] + "Usuario/Teste", httpContent);
-        }
-
-        public class PdfModel
-        {
-            public byte[] Content { get; set; }
+            if (byteDocumento != null)
+                return await PostAsync(urlApi + "Usuario/Teste", byteDocumento);
+            else
+                throw new InvalidOperationException("O byte de documentos é nulo");
         }
     }
 }

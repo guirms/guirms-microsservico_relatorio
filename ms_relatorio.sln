@@ -11,19 +11,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Application", "2 - Appl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{FDD7E6C5-43CD-4854-BB94-44E49FA6D74A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3- Infrastructure", "3- Infrastructure", "{F86DDDE9-63CE-41F6-8EFA-0128C90B3174}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infrastructure", "4 - Infrastructure", "{F86DDDE9-63CE-41F6-8EFA-0128C90B3174}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.1 - CrossCuttng", "3.1 - CrossCuttng", "{F57BC6D8-8A65-411B-B6F1-03906F4C0492}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - CrossCuttng", "4.1 - CrossCuttng", "{F57BC6D8-8A65-411B-B6F1-03906F4C0492}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra.CrossCuting", "Infra.CrossCuting\Infra.CrossCuting.csproj", "{F41193FB-D191-485A-9849-5FF99F512E32}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.2 - MessageConsumer", "3.2 - MessageConsumer", "{7F06F2F9-4FCA-4DD3-A16A-8017F8A4862F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2 - MessageConsumer", "4.2 - MessageConsumer", "{7F06F2F9-4FCA-4DD3-A16A-8017F8A4862F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra.MessageConsumer", "Infra.MessageConsumer\Infra.MessageConsumer.csproj", "{3D3E3447-2C1E-447A-A239-1DA93486774B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.3 - External", "3.3 - External", "{ABCAA99F-A6B1-46F1-A569-0E6580731EA8}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.3 - External", "4.3 - External", "{ABCAA99F-A6B1-46F1-A569-0E6580731EA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infra.External", "Infra.External\Infra.External.csproj", "{96DABE99-F0D8-43FE-AE1C-E7D42B13D9C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra.External", "Infra.External\Infra.External.csproj", "{96DABE99-F0D8-43FE-AE1C-E7D42B13D9C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

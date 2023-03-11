@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-using System.Text;
+﻿using System.Text;
 using System.Text.Json;
 
 namespace Infra.External.HttpRepositoryBase
@@ -13,13 +12,13 @@ namespace Infra.External.HttpRepositoryBase
             _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
         }
 
-        public async Task PostAsync(string metodo, object data)
+        public async Task<HttpResponseMessage> PostAsync(string metodo, object data)
         {
             var content = new StringContent(JsonSerializer.Serialize(data), Encoding.UTF8, "application/json");
 
             try
             {
-                var response = await _httpClient.PostAsync(metodo, content);
+                return await _httpClient.PostAsync(metodo, content);
             }
             catch (HttpRequestException ex)
             {

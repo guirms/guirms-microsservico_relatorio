@@ -2,6 +2,6 @@
 {
     public interface IBaseHttpClient
     {
-        Task PostAsync(string url, object data);
+        Task<HttpResponseMessage> PostAsync(string url, object data);
     }
 }
