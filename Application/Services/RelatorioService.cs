@@ -7,6 +7,7 @@ namespace Application.Services
     public class RelatorioService : IRelatorioService
     {
         private readonly IEstacionaFacilRepository _estacionaFacilRepository;
+
         //public RelatorioService(IRabbitMqConfig messageConsumerService, IEstacionaFacilRepository estacionaFacilRepository)
         //{
         //    messageConsumerService.OnReceived += data =>
@@ -20,37 +21,13 @@ namespace Application.Services
         //    _estacionaFacilRepository = estacionaFacilRepository;
         //}
 
-        public RelatorioService()
+        public RelatorioService(IEstacionaFacilRepository estacionaFacilRepository)
         {
-            //_estacionaFacilRepository = estacionaFacilRepository;
+            _estacionaFacilRepository = estacionaFacilRepository;
         }
 
         public async Task<bool> GerarRelatorioPDF()
         {
-            //var url = @"https://localhost:7253/Usuario/Teste";
-
-            //HttpClient httpClient = new HttpClient();
-
-            //MemoryStream memoryStream = new MemoryStream();
-            //PdfDocument pdf = new PdfDocument(new PdfWriter(memoryStream));
-            //Document documento = new Document(pdf);
-
-            //documento.Add(new Paragraph("Este é um documento PDF gerado com iText7. rubi"));
-
-            //documento.Close();
-
-            //byte[] conteudoPdf = memoryStream.ToArray();
-            //HttpContent content = new ByteArrayContent(conteudoPdf);
-
-            //HttpResponseMessage response = await httpClient.PostAsync(url, content);
-
-            //if (response.IsSuccessStatusCode)
-            //{
-            //    Console.WriteLine("Documento PDF enviado com sucesso.");
-            //}
-
-            // DPS DE PRONTO
-
             using (var memory = new MemoryStream())
             {
                 var documento = RelatorioGeral.GerarRelatorioGeral(memory);

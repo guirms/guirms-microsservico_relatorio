@@ -5,26 +5,39 @@ namespace Infra.External.HttpRepositoryBase
 {
     public class BaseHttpClient : IBaseHttpClient, IDisposable
     {
-        private readonly HttpClient _httpClient;
+        protected readonly HttpClient _httpClient;
 
-        public BaseHttpClient(HttpClient httpClient)
+        public BaseHttpClient()
         {
-            _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+            _httpClient = new HttpClient() ?? throw new ArgumentNullException(nameof(_httpClient));
         }
 
-        public async Task<HttpResponseMessage> PostAsync(string metodo, object data)
+        public async Task<HttpResponseMessage> PostJsonObjectAsync(string url, object data)
         {
             var content = new StringContent(JsonSerializer.Serialize(data), Encoding.UTF8, "application/json");
 
             try
             {
-                return await _httpClient.PostAsync(metodo, content);
+                return await _httpClient.PostAsync(url, content);
             }
             catch (HttpRequestException ex)
             {
-                throw new HttpRequestException($"Erro ao enviar webhook para {metodo}", ex);
+                throw new HttpRequestException($"Erro ao enviar webhook para {url}", ex);
             }
         }
+
+        public async Task<HttpResponseMessage> PostByteReportAsync(string url, ByteArrayContent report)
+        {
+            try
+            {
+                return await _httpClient.PostAsync(url, report);
+            }
+            catch (HttpRequestException ex)
+            {
+                throw new HttpRequestException($"Erro ao enviar webhook para {url}", ex);
+            }
+        }
+
 
         public void Dispose()
         {
